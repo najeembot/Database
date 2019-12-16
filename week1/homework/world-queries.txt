@@ -1,0 +1,196 @@
+what are the names of all the cities in Netherlands?
+
+
+select * from city where `CountryName` = 'NLD';
+
+'5', 'Amsterdam', 'NLD', 'Noord-Holland', '731200'
+'6', 'Rotterdam', 'NLD', 'Zuid-Holland', '593321'
+'7', 'Haag', 'NLD', 'Zuid-Holland', '440900'
+'8', 'Utrecht', 'NLD', 'Utrecht', '234323'
+'9', 'Eindhoven', 'NLD', 'Noord-Brabant', '201843'
+'10', 'Tilburg', 'NLD', 'Noord-Brabant', '193238'
+'11', 'Groningen', 'NLD', 'Groningen', '172701'
+'12', 'Breda', 'NLD', 'Noord-Brabant', '160398'
+'13', 'Apeldoorn', 'NLD', 'Gelderland', '153491'
+'14', 'Nijmegen', 'NLD', 'Gelderland', '152463'
+'15', 'Enschede', 'NLD', 'Overijssel', '149544'
+'16', 'Haarlem', 'NLD', 'Noord-Holland', '148772'
+'17', 'Almere', 'NLD', 'Flevoland', '142465'
+'18', 'Arnhem', 'NLD', 'Gelderland', '138020'
+'19', 'Zaanstad', 'NLD', 'Noord-Holland', '135621'
+'20', 'Â´s-Hertogenbosch', 'NLD', 'Noord-Brabant', '129170'
+'21', 'Amersfoort', 'NLD', 'Utrecht', '126270'
+'22', 'Maastricht', 'NLD', 'Limburg', '122087'
+'23', 'Dordrecht', 'NLD', 'Zuid-Holland', '119811'
+'24', 'Leiden', 'NLD', 'Zuid-Holland', '117196'
+'25', 'Haarlemmermeer', 'NLD', 'Noord-Holland', '110722'
+'26', 'Zoetermeer', 'NLD', 'Zuid-Holland', '110214'
+'27', 'Emmen', 'NLD', 'Drenthe', '105853'
+'28', 'Zwolle', 'NLD', 'Overijssel', '105819'
+'29', 'Ede', 'NLD', 'Gelderland', '101574'
+'30', 'Delft', 'NLD', 'Zuid-Holland', '95268'
+'31', 'Heerlen', 'NLD', 'Limburg', '95052'
+'32', 'Alkmaar', 'NLD', 'Noord-Holland', '92713'
+
+what is the population of Rotterdam?
+
+select `population` from city where `Name` = 'Rotterdam';
+
+'593321'
+
+
+
+what is the name of all countries in the continent of North America
+
+select distinct `Name` from country where `Continent` = 'North America' order by `Name` asc limit 50;
+
+'Anguilla'
+'Antigua and Barbuda'
+'Aruba'
+'Bahamas'
+'Barbados'
+'Belize'
+'Bermuda'
+'Canada'
+'Cayman Islands'
+'Costa Rica'
+'Cuba'
+'Dominica'
+'Dominican Republic'
+'El Salvador'
+'Greenland'
+'Grenada'
+'Guadeloupe'
+'Guatemala'
+'Haiti'
+'Honduras'
+'Jamaica'
+'Martinique'
+'Mexico'
+'Montserrat'
+'Netherlands Antilles'
+'Nicaragua'
+'Panama'
+'Puerto Rico'
+'Saint Kitts and Nevis'
+'Saint Lucia'
+'Saint Pierre and Miquelon'
+'Saint Vincent and the Grenadines'
+'Trinidad and Tobago'
+'Turks and Caicos Islands'
+'United States'
+'Virgin Islands, British'
+'Virgin Islands, U.S.'
+
+What's the top 10 countries by SurfaceArea ?
+
+select `Name` from `country` order by `SurfaceArea` desc limit 10;
+
+'Russian Federation'
+'Antarctica'
+'Canada'
+'China'
+'United States'
+'Brazil'
+'Australia'
+'India'
+'Argentina'
+'Kazakstan'
+
+
+
+What's the top 10 most populated cities?
+
+select `Name` from `city` order by `Population` desc limit 10;
+
+'Mumbai (Bombay)'
+'Seoul'
+'SÃ£o Paulo'
+'Shanghai'
+'Jakarta'
+'Karachi'
+'Istanbul'
+'Ciudad de MÃ©xico'
+'Moscow'
+'New York'
+
+
+
+Select the top 3 countries by population that their names start with the letter ‘P’
+
+select `Name` from `city` where `Name` like 'P%' order by `Population` desc limit 3;
+
+'Peking'
+'Pusan'
+'Pyongyang'
+
+
+
+What is the population in Asia?
+
+select sum(`Population`) from `country` where `Continent` = 'Asia';
+
+'3705025700'
+
+
+
+Which languages are spoken in the Region of ‘South America’?
+
+select countrylanguage.Language, country.Region from country inner join countrylanguage on country.Code = countrylanguage.CountryName where country.Region = 'South America';
+
+'Indian Languages', 'South America'
+'Italian', 'South America'
+'Spanish', 'South America'
+'AimarÃ¡', 'South America'
+'GuaranÃ­', 'South America'
+'KetÅ¡ua', 'South America'
+'Spanish', 'South America'
+'German', 'South America'
+'Indian Languages', 'South America'
+'Italian', 'South America'
+'Japanese', 'South America'
+'Portuguese', 'South America'
+'AimarÃ¡', 'South America'
+'Araucan', 'South America'
+'Rapa nui', 'South America'
+'Spanish', 'South America'
+'Arawakan', 'South America'
+'Caribbean', 'South America'
+'Chibcha', 'South America'
+'Creole English', 'South America'
+'Spanish', 'South America'
+'KetÅ¡ua', 'South America'
+'Spanish', 'South America'
+'English', 'South America'
+'Creole French', 'South America'
+'Indian Languages', 'South America'
+'Arawakan', 'South America'
+'Caribbean', 'South America'
+'Creole English', 'South America'
+'AimarÃ¡', 'South America'
+'KetÅ¡ua', 'South America'
+'Spanish', 'South America'
+'German', 'South America'
+'GuaranÃ­', 'South America'
+'Portuguese', 'South America'
+'Spanish', 'South America'
+'Hindi', 'South America'
+'Sranantonga', 'South America'
+'Spanish', 'South America'
+'Goajiro', 'South America'
+'Spanish', 'South America'
+'Warrau', 'South America'
+
+
+
+What are the languages spoken on all cities named ‘Barcelona’?
+
+select countrylanguage.Language, city.Name from city inner join countrylanguage on city.CountryName = countrylanguage.CountryName where city.Name = 'Barcelona';
+
+'Basque', 'Barcelona'
+'Catalan', 'Barcelona'
+'Galecian', 'Barcelona'
+'Spanish', 'Barcelona'
+'Goajiro', 'Barcelona'
+'Spanish', 'Barcelona'
+'Warrau', 'Barcelona'
